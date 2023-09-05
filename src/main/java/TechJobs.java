@@ -118,7 +118,13 @@ public class TechJobs {
     }
 
     // Print a list of jobs
+    //https://www.geeksforgeeks.org/traverse-through-a-hashmap-in-java/ reference for forEach on HashMap
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        for (HashMap job: someJobs) {
+            System.out.println("****");
+            job.forEach((k,v) -> System.out.println(k + ": " + v ));
+            System.out.println("****\n");
+        }
 
         System.out.println("printJobs is not implemented yet");
     }
