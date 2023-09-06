@@ -5,10 +5,8 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by LaunchCode
@@ -95,7 +93,35 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+
+
+        ArrayList<HashMap<String,String>> jobs = new ArrayList<>();
+        /* Iterator<HashMap<String, String>> iter = allJobs.iterator();
+        while(iter.hasNext()) {
+            HashMap<String,String> row = iter.next();
+            AtomicBoolean found = new AtomicBoolean(false);
+            row.forEach((k,v) -> {
+                if(row.get(k).contains(value) && !found.get()) {
+                    jobs.add(row);
+                    found.set(true);
+                }
+            });
+        }*/
+
+        //Used AtomicBoolean, never used it before. But intellij is great for recommending me what I should
+        //Have done to get a variable to work in a lambda expression. solves problem of duplicates
+        for(HashMap<String,String> row : allJobs) {
+            AtomicBoolean found = new AtomicBoolean(false);
+            row.forEach((k,v) -> {
+                if(row.get(k).contains(value) && !found.get()) {
+                    jobs.add(row);
+                    found.set(true);
+                }
+            });
+        }
+
+
+        return jobs;
     }
 
     /**
