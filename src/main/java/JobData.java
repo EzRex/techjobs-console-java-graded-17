@@ -71,9 +71,9 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toUpperCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(value.toUpperCase())) {
                 jobs.add(row);
             }
         }
@@ -113,7 +113,7 @@ public class JobData {
         for(HashMap<String,String> row : allJobs) {
             AtomicBoolean found = new AtomicBoolean(false);
             row.forEach((k,v) -> {
-                if(row.get(k).contains(value) && !found.get()) {
+                if(row.get(k).toUpperCase().contains(value.toUpperCase()) && !found.get()) {
                     jobs.add(row);
                     found.set(true);
                 }

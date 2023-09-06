@@ -123,10 +123,11 @@ public class TechJobs {
         if (someJobs.size() == 0 || someJobs == null) {
             System.out.print("No Results");
         } else {
+
             for (HashMap<String, String> job : someJobs) {
-                System.out.println("****");
+                System.out.println("\n*****");
                 job.forEach((k, v) -> System.out.println(k + ": " + v));
-                System.out.println("****\n");
+                System.out.println("*****");
             }
         }
     }
